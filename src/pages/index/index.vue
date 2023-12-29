@@ -1,29 +1,43 @@
 <template>
 	<view class="content">
 		<image class="logo" src="/static/logo.png"></image>
-		<view>
+		<view class="text-area">
 			<text class="title">{{title}}</text>
+      <view class="text-area-sub" @click="testapi">sssss</view>
+      <text class="iconfont kmg-FOBtance"></text>
+		</view>
+		<view>
+			我是接口返回的信息{{ info }}
 		</view>
 	</view>
 </template>
 
 <script>
+	import { getBanners, getApplictions } from '@/api/index'
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				title: 'Hello',
+				info: ''
 			}
 		},
 		onLoad() {
 
 		},
 		methods: {
-
+			testapi() {
+				getBanners().then(res => {
+					this.info = res.data
+					console.log({ res })
+				}).catch(() => {
+					
+				})
+			}
 		}
 	}
 </script>
 
-<style>
+<style lang="scss">
 	.content {
 		display: flex;
 		flex-direction: column;
@@ -40,6 +54,9 @@
 	.text-area {
 		display: flex;
 		justify-content: center;
+		&-sub{
+			color: red
+		}    
 	}
 
 	.title {
