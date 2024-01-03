@@ -6,6 +6,7 @@ module.exports = {
     config.resolve.alias
       .set('@api', resolve('src/api'))
   },
-  transpileDependencies: ['luch-request']    
+  transpileDependencies: ['uview-ui']
+  // transpileDependencies: ['@dcloudio/uni-ui', 'luch-request']    
 }
 

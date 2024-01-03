@@ -9,7 +9,6 @@ import {
 // 处理app&小程序
 axios.defaults.adapter = function(config) {
   return new Promise((resolve, reject) => {
-      console.log({ config })
       var settle = require('axios/lib/core/settle');
       var buildURL = require('axios/lib/helpers/buildURL');
       uni.request({
@@ -45,11 +44,11 @@ service.interceptors.request.use(
     const unsignRegExp = /\/api\/\w+\/unsigned\//
     // const token = getToken()
 		// const tokenNumber = getTokenNumber()
-		const token = 'eyJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3NrZXkiOiJ4dWtlMDQiLCJwaG9uZW51bWJlciI6IjE4NTE2MDA4MzUzIiwiaWQiOjM3NTUsInR5cGUiOjEwLCJpc3MiOiJwaW5lYXBwbGUiLCJleHAiOjE3MDUzOTY4OTd9.eXpqN1-TD_suqqJLu8Sg87-hLBjN-Qa04peLjUHeZ68'
-    const tokenNumber = 1060971415353692160		
+		const token = 'eyJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3NrZXkiOiJ4dWtlMDQiLCJwaG9uZW51bWJlciI6IjE4NTE2MDA4MzUzIiwiaWQiOjM3NTUsInR5cGUiOjEwLCJpc3MiOiJwaW5lYXBwbGUiLCJleHAiOjE3MDUzOTcyOTl9.RFQ-s-5d8hfyysDuRCz-WNJh17HD5fRk7gLfYSpbKvw'
+    const tokenNumber = '1060973102894157824'		
     if (!unsignRegExp.test(config.url) && !config.noRequiresAuth && token && tokenNumber) {
-      config.header['Authorization'] = token
-      config.header['X-Serial-Number-Id'] = tokenNumber
+      config.headers['Authorization'] = token
+      config.headers['X-Serial-Number-Id'] = tokenNumber
     }
 		return config
 	},
@@ -60,7 +59,6 @@ service.interceptors.request.use(
 
 service.interceptors.response.use(
   response => {
-    console.log({ response })
     const { data, status } = response
     if (status >= 200 && status < 300) {
       return data

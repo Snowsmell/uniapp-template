@@ -1,0 +1,179 @@
+// 块显示/隐藏 block
+// ------------------------
+.none{ display: none; }
+.block{ display: block; }
+.hidden{ visibility: hidden; }
+.visible{ visibility: visible; }
+.inline{ display: inline-block; }
+// width, height
+// ------------------------
+.w-auto{ width: auto !important; }
+.w-0{ width: 0px !important; }
+.w-full{ width: 100% !important; }
+.w-screen{ width: 100vw !important; }
+.w-min-0{ min-width: 0px !important; }
+.h-0{ height: 0px !important; }
+.h-auto{ height: auto !important; }
+.h-full{ height: 100% !important; }
+.h-screen{ height: 100vh !important; }
+.h-min-0{ min-height: 0px !important; }
+.d-c{ color: #666 !important; }
+.blue { color: #598cff !important; }
+.orange{ color: orange !important }
+.yellow{ color: #fadb14 !important }
+.bo-x{ box-sizing: border-box !important; }
+.bold{ font-weight: bold;color: #000 !important; }
+.green{ color: #0bcd74 !important }
+.red{ color: #ff3636 !important }
+.gray{ color: #858b9c !important }
+.bth1{
+  overflow:hidden; 
+  text-overflow:ellipsis; 
+  white-space:nowrap; 
+}
+.bth2{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display:-webkit-box; 
+  -webkit-box-orient:vertical; 
+  -webkit-line-clamp:2; 
+}
+.por { position: relative; }
+.poa { position: absolute; }
+
+.red { color: #ff3636 !important; }
+// margin, padding
+// ------------------------
+$gaps: 0, 2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 72;
+@each $g in $gaps {
+  .mt-#{$g} {
+    margin-top: $g + px !important;
+  }
+  .mr-#{$g} {
+    margin-right: $g + px !important;
+  }
+  .mb-#{$g} {
+    margin-bottom: $g + px !important;
+  }
+  .ml-#{$g} {
+    margin-left: $g + px !important;
+  }
+  .pt-#{$g} {
+    padding-top: $g + px !important;
+  }
+  .pr-#{$g} {
+    padding-right: $g + px !important;
+  }
+  .pb-#{$g} {
+    padding-bottom: $g + px !important;
+  }
+  .pl-#{$g} {
+    padding-left: $g + px !important;
+  }
+  // 水平方向
+  .px-#{$g} {
+    padding-left: $g + px !important;
+    padding-right: $g + px !important;
+  }
+  .mx-#{$g} {
+    margin-left: $g + px !important;
+    margin-right: $g + px !important;
+  }
+  // 垂直方向
+  .py-#{$g} {
+    padding-top: $g + px !important;
+    padding-bottom: $g + px !important;
+  }
+  .my-#{$g} {
+    margin-top: $g + px !important;
+    margin-bottom: $g + px !important;
+  }
+  // 垂直、水平方向
+  .pa-#{$g} {
+    padding: $g + px !important;
+  }
+  .ma-#{$g} {
+    margin: $g + px !important;
+  }  
+}
+// flex
+// ------------------------
+@mixin flexible($name, $prop, $val) {
+  &-#{$name} {
+    display: flex;
+    #{$prop}: $val
+  }
+  &--#{$name} {
+    #{$prop}: $val
+  }
+}
+.flex{
+  display: flex;
+  &-item{
+    min-width: 0;
+    flex: 1;
+  }
+  @include flexible(row, flex-direction, row);
+  @include flexible(column, flex-direction, column);
+  @include flexible(nowrap, flex-wrap, nowrap);
+  @include flexible(wrap, flex-wrap, wrap);
+  @include flexible(left, justify-content, flex-start);
+  @include flexible(center, justify-content, center);
+  @include flexible(right, justify-content, flex-end);
+  @include flexible(between, justify-content, space-between);
+  @include flexible(around, justify-content, space-around);
+  @include flexible(top, align-items, flex-start);
+  @include flexible(middle, align-items, center);
+  @include flexible(bottom, align-items, flex-end);
+  @include flexible(baseline, align-items, baseline);
+  @include flexible(stretch, align-items, stretch);
+  
+  &-centre, &-center-middle, &-middle-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// font位置
+.tal{
+  text-align: left;
+}
+.tac{
+  text-align: center;
+}
+.tar{
+  text-align: right;
+}
+.taj{
+  text-align: justify;
+}
+.vat{
+  vertical-align: top;
+}
+.vam{
+  vertical-align: middle;
+}
+.vab{
+  vertical-align: bottom;
+}
+
+// font weight
+.fwn {
+  font-weight: normal;
+}
+.fwb {
+  font-weight: bold;
+}
+.fsi {
+  font-style: italic;
+}
+
+// font 大小
+$fonts: 10, 12, 13, 14, 15, 16, 18, 20, 24, 28, 30, 32, 36;
+@each $s in $fonts {
+  .font-#{$s}{
+    font-size: $s + px !important;
+  }
+}
+

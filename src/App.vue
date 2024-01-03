@@ -1,3 +1,11 @@
+<style lang="scss">
+	@import "uview-ui/index.scss";
+	@import '@/static/iconfont/iconfont.css';
+	uni-page-body,#app{
+		height: 100%;
+	} 	
+</style>
+
 <script>
 	export default {
 		onLaunch: function() {
@@ -11,8 +19,3 @@
 		}
 	}
 </script>
-
-<style lang="scss">
-@import '@/static/iconfont/iconfont.css';
-/*每个页面公共css */
-</style>
