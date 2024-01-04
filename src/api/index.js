@@ -1,12 +1,6 @@
-import { request, userService } from '@/api/config.js'
+import { request, userService, deviceService } from '@/api/config.js'
 
-// export const getApplictions = (params = { application_type_string: 0, project_id: 1408 }) => {
-// 	return request.get(`${userService}/app/application/list/`, { params })
-// }
-
-// export const getBanners = () => {
-// 	return request.get(`${userService}/unsigned/banner/banners/1/`)
-// }
+// 获取应用
 export const getApplictions = params => {
 	return request({
     url: `${userService}/app/application/list/`,
@@ -15,9 +9,20 @@ export const getApplictions = params => {
   })
 }
 
-export const getBanners = () => {
-	return request({
-    url: `${userService}/unsigned/banner/banners/1/`,
-    method: 'get'
+// 获取视频监控安装地点
+
+export const getVideoLocation = params => {
+  return request({
+    url: `${deviceService}/app/video/project/location/list/`,
+    method: 'get',
+    params
+  })
+}
+
+export const getVideoLocationDevice = params => {
+  return request({
+    url: `${deviceService}/app/video/install/location/device/list/`,
+    method: 'get',
+    params
   })
 }

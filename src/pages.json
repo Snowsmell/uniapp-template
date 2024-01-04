@@ -16,12 +16,19 @@
 		},
 		{
 			"path": "pages/mine/mine"
-		}		
+		},
+		{
+			"path": "pages/monitor/monitor",
+			"style": {
+				"navigationBarTitleText": "视频监控",
+				"navigationBarTextStyle": "white"
+			}
+		}
 	],	
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationBarBackgroundColor": "#598cff",
 		"backgroundColor": "#598cff"
 	}
 }

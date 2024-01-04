@@ -42,7 +42,8 @@
 					<u-grid 
 						class="home-apps-block-list" :border="false" col="4">
 						<u-grid-item 
-							v-for="(app, idx) in apps.application_list.filter(v => v.has_right)" :key="idx" class="tac mb-4">
+							v-for="(app, idx) in apps.application_list.filter(v => v.has_right)" :key="idx" 
+							class="tac mb-8" @click="handleClick(app)">
 							<image style="width:40px;height:40px" mode="widthFix" :src="!app.icon.indexOf('https') || !app.icon.indexOf('http')? app.icon : icon" />
 							<text class="mt-4">{{ app.name }}</text>
 						</u-grid-item>
@@ -54,11 +55,11 @@
 </template>
 
 <script>
+	import { pageRoutes } from '@/route/index'
 	import { getApplictions } from '@/api/index'
 	export default {
 		data() {
 			return {
-				title: 'Hello',
 				navs: [
 					{ text: '施工铭牌', icon: 'kmg-shigongmingpai', colors: ['#7CB4FF', '#2690F7'] },
 					{ text: '预警中心', icon: 'kmg-yujingzhongxin', colors: ['#FFB38C', '#FF7A38'] },
@@ -84,8 +85,15 @@
 			toHome() {
 				uni.switchTab({ url: '/pages/index/index' })
 			},
-			handleClick() {
-				console.log('locationClick')
+			handleClick(app) {
+				console.log({ app })
+        const url = pageRoutes[app.application_code]?.url
+        const isTab = pageRoutes[app.application_code]?.isTab
+        if (!url) {
+          uni.showToast({ title: '请检查配置url', icon: 'none' })
+          return
+        }
+				uni.navigateTo({ url })
 			},
 			testapi() {
 				getApplictions({ 
