@@ -44,7 +44,7 @@ export const pageRoutes = {
   // smartnut: { name: '智能螺母', isTab: false, url: '/packageDevice/pages/smartnut/index' },
   // nacelle: { name: '吊篮', isTab: false, url: '/packageDevice/pages/nacelle/index' },
   // // 绿色施工
-  // environment: { name: '环境监测', isTab: false, url: '/packageEnvironment/pages/environment/index' },
+  environment: { name: '环境监测', isTab: false, url: '/pages/environment/environment' },
   // smoke: { name: '智能烟感', isTab: false, url: '/packageEnvironment/pages/smoke/index' },
   // water: { name: '智能用水', isTab: false, url: '/packageEnvironment/pages/water/index' },
   // electric: { name: '智能用电', isTab: false, url: '/packageEnvironment/pages/electric/index' },

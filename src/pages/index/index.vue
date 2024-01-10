@@ -79,29 +79,33 @@
 		},
 		onLoad() {
 			this.info = uni.getWindowInfo()
-			this.testapi()
+			this.init()
 		},
 		methods: {
 			toHome() {
 				uni.switchTab({ url: '/pages/index/index' })
 			},
 			handleClick(app) {
-				console.log({ app })
         const url = pageRoutes[app.application_code]?.url
         const isTab = pageRoutes[app.application_code]?.isTab
         if (!url) {
           uni.showToast({ title: '请检查配置url', icon: 'none' })
           return
         }
-				uni.navigateTo({ url })
+				uni.navigateTo({ 
+					url: `${url}?projectId=1408`
+				})
 			},
-			testapi() {
+			init() {
+				uni.showLoading({ title: '加载中', mask: true })
 				getApplictions({ 
 					application_type_string: '0,1', 
 					project_id: 1408 
 				}).then(res => {
 					this.applications = res.data[0].application_type_list
 				}).catch(err => {
+				}).finally(() => {
+					uni.hideLoading()
 				})
 			}
 		}

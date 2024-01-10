@@ -1,4 +1,5 @@
 import { request, userService, deviceService } from '@/api/config.js'
+export * from '@/api/modules/environment.js'
 
 // 获取应用
 export const getApplictions = params => {
@@ -26,3 +27,18 @@ export const getVideoLocationDevice = params => {
     params
   })
 }
+
+/**
+ * 监控信息
+ * @param {*} params.device_number
+ * @param {*} params.channel_number 
+ * @returns 
+ */
+export function getMonitorDeviceDetail(params) {
+  return request({
+    url: `${deviceService}/video/live-url/`,
+    method: 'get',
+    params
+  })
+}
+
